@@ -1,13 +1,16 @@
 (function (window) {
     'use strict';
-    // can't read property FormHandler is undefined
-    var SERVER_URL = 'https://co.audstanley.com/coffeeorders';
+    // For Richard's remote server
+    // var SERVER_URL = 'https://co.audstanley.com/coffeeorders';
+    // For my local server
+    var SERVER_URL = 'http://localhost:3000/coffeeorders';
     var App = window.App;
     var FormHandler = App.FormHandler;
     var Truck = App.Truck;
     var DataStore = App.DataStore;
     var CheckList = App.CheckList;
     var Validation = App.Validation;
+    var RemoteDataStore = App.RemoteDataStore;
     var remoteDS = new RemoteDataStore(SERVER_URL);
 
     window.myTruck = myTruck;
@@ -16,7 +19,7 @@
     var FORM_SELECTOR = '[data-coffee-order="form"]';
     var formHandler = new FormHandler(FORM_SELECTOR);
     var CHECKLIST_SELECTOR = '[data-coffee-order="checklist"]';
-    var RemoteDataStore = App.RemoteDataStore;
+   
 
     var checkList = new CheckList(CHECKLIST_SELECTOR);
     checkList.addClickHandler(myTruck.deliverOrder.bind(myTruck));
